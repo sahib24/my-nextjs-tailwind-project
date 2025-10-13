@@ -69,3 +69,7 @@
     height: 7px;
   }
 }
+
+.ourclient .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
