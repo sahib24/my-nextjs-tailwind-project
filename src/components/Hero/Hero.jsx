@@ -1,6 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 
@@ -16,10 +17,25 @@ const images = [
 const Slider = () => {
   return (
     <div className="pb-6 pt-10">
-      <h2 className="text-[16px] sm:text-[19px] md:text-[21px] lg:text-[24px] font-[500] mb-14 text-center max-w-[800px] text-gray-500 leading-none mx-auto ">
-        Computer programming or coding is the composition of sequences of
-        instructions.
-      </h2>
+      <motion.div
+        initial={{ x: 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, type: "just" }}
+      >
+        <p className="text-[16px] sm:text-[19px] md:text-[21px] lg:text-[28px] font-[700] mb-4 text-center  text-black leading-none mx-auto ">
+          Hero Section
+        </p>
+      </motion.div>
+      <motion.div
+        initial={{ x: -50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, type: "just" }}
+      >
+        <h2 className="text-[16px] sm:text-[19px] md:text-[20px] lg:text-[20px] font-[500] mb-14 text-center max-w-[600px] text-gray-500 leading-snug mx-auto ">
+          Computer programming or coding is the composition of sequences of
+          instructions.
+        </h2>
+      </motion.div>
 
       <Swiper
         modules={[EffectCoverflow, Pagination, Autoplay]}

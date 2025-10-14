@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AiFillDashboard } from "react-icons/ai";
 import {
@@ -286,7 +287,7 @@ const NewLayout = () => {
                     : "Collapse Sidebar"
                 }
               >
-                {isMobile ? <IoMenu /> : "☰"}
+                {isMobile ? "☰" : "☰"}
               </button>
               <div className="text-[26px] font-semibold text-gray-800 flex items-center pl-4">
                 My Design
@@ -341,9 +342,11 @@ const NewLayout = () => {
                     key={index}
                     className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl border border-gray-100"
                   >
-                    <img
+                    <Image
                       src={card.image}
                       alt={card.title}
+                      width={400}
+                      height={400}
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-4">

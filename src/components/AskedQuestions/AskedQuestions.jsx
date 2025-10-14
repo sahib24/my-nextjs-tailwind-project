@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const steps = [
   {
@@ -39,56 +40,104 @@ const steps = [
 export default function OurWorking() {
   const [activeIndex, setActiveIndex] = useState(-1);
 
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? -1 : index);
+  };
+
   return (
-    <div className="container py-10">
+    <div className="container py-10 px-8">
       <div className="text-center md:text-left space-y-24">
-        <h1 className="text-[34px] font-semibold text-D_Grey   mb-8 text-center">
-          Asked Questions
-        </h1>
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h1 className="text-[34px] font-semibold text-D_Grey mb-8 text-center">
+            Asked Questions
+          </h1>
+        </motion.div>
       </div>
-      {steps.map((step, index) => {
-        const isOpen = activeIndex === index;
 
-        return (
-          <div
-            key={index}
-            className={`px-8 mb-4 transition-all duration-300 ease-in-out rounded-[40px] border-[2px] border-b-6 transform  hover:scale-[1.03] hover:-translate-y-1 ${
-              isOpen
-                ? "bg-gradient-to-r from-green-400 to-blue-500"
-                : " bg-gradient-to-r from-[#FFBA26]  to-[#FF9A0E]  hover:from-[#ea8e0d] hover:to-[#FFBA26] "
-            }`}
-          >
-            <div
-              className="flex justify-between items-center py-10 cursor-pointer"
-              onClick={() => setActiveIndex(isOpen ? -1 : index)}
-            >
-              <div className="flex items-center gap-4">
-                <h2 className="font-bold text-[18px]">{step.title}</h2>
-              </div>
+      <div className="space-y-4">
+        {steps.map((step, index) => {
+          const isOpen = activeIndex === index;
 
-              <Image
-                src={isOpen ? "/minus.png" : "/plus.png"}
-                alt={isOpen ? "Collapse" : "Expand"}
-                width={24}
-                height={24}
-                className={`w-8 h-8 transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : "rotate-0"
-                }`}
-              />
-            </div>
+          const direction = index % 2 === 0 ? -50 : 50;
 
-            <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          return (
+            <motion.div
+              key={index}
+              initial={{ x: direction, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+              }}
+              whileHover={{
+                scale: 1.02,
+                x: direction > 0 ? -3 : 3,
+              }}
+              className={`px-8 mb-4 transition-all duration-300 ease-in-out rounded-[40px] border-[2px] border-b-6 cursor-pointer ${
+                isOpen
+                  ? "bg-gradient-to-r from-green-400 to-blue-500 shadow-lg"
+                  : "bg-gradient-to-r from-[#FFBA26] to-[#FF9A0E] hover:from-[#ea8e0d] hover:to-[#FFBA26] shadow-md"
               }`}
+              onClick={() => toggleAccordion(index)}
             >
-              <div className="pl-[72px] border-t border-black pt-4 pb-6">
-                <p>{step.description}</p>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+              <motion.div
+                className="flex justify-between items-center py-10"
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center gap-4">
+                  <motion.h2
+                    className="font-bold text-[18px] text-white"
+                    whileHover={{ x: direction > 0 ? -5 : 5 }}
+                  >
+                    {step.title}
+                  </motion.h2>
+                </div>
+
+                <motion.div
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src={isOpen ? "/minus.png" : "/plus.png"}
+                    alt={isOpen ? "Collapse" : "Expand"}
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
+                  />
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isOpen ? "auto" : 0,
+                  opacity: isOpen ? 1 : 0,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeInOut",
+                }}
+                className="overflow-hidden"
+              >
+                <motion.div
+                  className="pl-[72px] border-t border-white pt-4 pb-6"
+                  initial={{ x: direction }}
+                  animate={{ x: isOpen ? 0 : direction }}
+                  transition={{ delay: isOpen ? 0.1 : 0 }}
+                >
+                  <p className="text-white text-[16px] leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }

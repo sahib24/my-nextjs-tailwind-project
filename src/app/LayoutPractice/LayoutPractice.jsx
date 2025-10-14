@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const cards = [
   {
@@ -49,12 +50,6 @@ const cards = [
 export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredCards = cards.filter(
-    (card) =>
-      card.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      card.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div>
@@ -118,14 +113,16 @@ export default function Home() {
 
           <main className="flex-1 p-2 md:p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 scale-95">
-              {filteredCards.map((card, index) => (
+              {cards.map((card, index) => (
                 <div
                   key={index}
                   className="bg-white shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
                 >
-                  <img
+                  <Image
                     src={card.image}
                     alt={card.title}
+                    width={400}
+                    height={400}
                     className="w-full h-50 object-cover"
                   />
                   <div className="p-4">

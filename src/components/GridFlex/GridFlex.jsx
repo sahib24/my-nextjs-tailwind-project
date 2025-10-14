@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 const CardsPage = () => {
   const cards = [
@@ -47,10 +48,29 @@ const CardsPage = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-[40px] font-bold text-center mb-3 ">Card Layout</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-8 scale-95">
+      <motion.div
+        initial={{ x: 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3, type: "just" }}
+      >
+        <h1 className="text-[40px] font-bold text-center mb-3 ">Card Layout</h1>
+      </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 scale-95">
         {cards.map((card, index) => (
-          <div
+          <motion.div
+            initial={{
+              x: index % 2 === 0 ? -100 : 100,
+              opacity: 0,
+            }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.3 + index * 0.1,
+              type: "spring",
+            }}
             key={index}
             className="bg-white shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
           >
@@ -63,7 +83,7 @@ const CardsPage = () => {
               <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
               <p className="text-gray-600 text-sm">{card.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
