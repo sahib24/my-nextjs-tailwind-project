@@ -58,18 +58,13 @@ const CardsPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 scale-95">
         {cards.map((card, index) => (
           <motion.div
-            initial={{
-              x: index % 2 === 0 ? -100 : 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-            }}
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             transition={{
-              duration: 1,
-              delay: 0.3 + index * 0.1,
+              duration: 0.8,
+              delay: index * 0.1,
               type: "spring",
+              damping: 15,
             }}
             key={index}
             className="bg-white shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"

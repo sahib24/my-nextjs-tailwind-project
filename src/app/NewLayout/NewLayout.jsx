@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -289,7 +290,7 @@ const NewLayout = () => {
               >
                 {isMobile ? "☰" : "☰"}
               </button>
-              <div className="text-[26px] font-semibold text-gray-800 flex items-center pl-4">
+              <div className="text-[28px] font-bold text-red-600 flex items-center pl-4">
                 My Design
               </div>
             </div>
@@ -314,28 +315,35 @@ const NewLayout = () => {
             className={`flex-1 p-6 bg-gray-50 overflow-auto transition-all duration-300 pt-24`}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
+              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <h3 className="text-gray-600 text-sm">Total Users</h3>
                 <p className="text-2xl font-bold">1,234</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500">
+              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <h3 className="text-gray-600 text-sm">Revenue</h3>
                 <p className="text-2xl font-bold">$12,456</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500">
+              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-yellow-500 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <h3 className="text-gray-600 text-sm">Orders</h3>
                 <p className="text-2xl font-bold">567</p>
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500">
+              <div className="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <h3 className="text-gray-600 text-sm">Pending</h3>
                 <p className="text-2xl font-bold">23</p>
               </div>
             </div>
 
             <div className="mb-6">
-              <h2 className="text-[26px] font-bold text-gray-800 text-center py-8">
-                All Items
-              </h2>
+              <motion.div
+                initial={{ x: 50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3, type: "just" }}
+              >
+                <h2 className="text-[26px] font-bold text-gray-800 text-center py-8">
+                  All Items
+                </h2>
+              </motion.div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 {filteredCards.map((card, index) => (
                   <div
@@ -373,11 +381,8 @@ const NewLayout = () => {
 
           <footer className="bg-gray-300 text-black py-8">
             <div className="flex flex-col px-6 md:flex-row justify-between items-center gap-8">
-              <div className="text-[24px] font-bold md:mb-0">
-                <Link
-                  href="#"
-                  className="hover:text-green-600 transition duration-200"
-                >
+              <div className="text-[28px] text-red-600 font-bold md:mb-0">
+                <Link href="#" className="transition duration-200">
                   Logo
                 </Link>
               </div>
@@ -385,31 +390,31 @@ const NewLayout = () => {
               <div className="flex flex-col sm:flex-row gap-6 text-center">
                 <Link
                   href="#"
-                  className="hover:text-green-600 hover:underline transition duration-200"
+                  className="hover:text-red-600 hover:underline transition duration-200"
                 >
                   Home
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 hover:underline transition duration-200"
+                  className="hover:text-red-600 hover:underline transition duration-200"
                 >
                   Settings
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 hover:underline transition duration-200"
+                  className="hover:text-red-600 hover:underline transition duration-200"
                 >
                   Profile
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 hover:underline transition duration-200"
+                  className="hover:text-red-600 hover:underline transition duration-200"
                 >
                   Blog
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 hover:underline transition duration-200"
+                  className="hover:text-red-600 hover:underline transition duration-200"
                 >
                   Contact Us
                 </Link>
@@ -418,19 +423,19 @@ const NewLayout = () => {
               <div className="flex gap-6 flex-col sm:flex-row">
                 <Link
                   href="#"
-                  className="hover:text-green-600 transition duration-200 font-medium"
+                  className="hover:text-red-600 transition duration-200 font-medium"
                 >
                   Facebook
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 transition duration-200 font-medium"
+                  className="hover:text-red-600 transition duration-200 font-medium"
                 >
                   Twitter
                 </Link>
                 <Link
                   href="#"
-                  className="hover:text-green-600 transition duration-200 font-medium"
+                  className="hover:text-red-600 transition duration-200 font-medium"
                 >
                   Instagram
                 </Link>
