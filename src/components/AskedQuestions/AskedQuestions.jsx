@@ -45,7 +45,7 @@ export default function OurWorking() {
   };
 
   return (
-    <div className="container py-10 px-8">
+    <div className="container py-10 ">
       <div className="text-center md:text-left space-y-24">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -77,7 +77,7 @@ export default function OurWorking() {
                 scale: 1.02,
                 x: direction > 0 ? -3 : 3,
               }}
-              className={`px-8 mb-4 transition-all duration-300 ease-in-out rounded-[40px] border-[2px] border-b-6 cursor-pointer ${
+              className={`px-5 mb-4 transition-all duration-300 ease-in-out rounded-[40px] border-[2px] border-b-6 cursor-pointer ${
                 isOpen
                   ? "bg-gradient-to-r from-green-400 to-blue-500 shadow-lg"
                   : "bg-gradient-to-r from-[#FFBA26] to-[#FF9A0E] hover:from-[#ea8e0d] hover:to-[#FFBA26] shadow-md"
@@ -88,7 +88,7 @@ export default function OurWorking() {
                 className="flex justify-between items-center py-10"
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 max-w-[350px]">
                   <motion.h2
                     className="font-bold text-[18px] text-white"
                     whileHover={{ x: direction > 0 ? -5 : 5 }}
@@ -106,7 +106,7 @@ export default function OurWorking() {
                     alt={isOpen ? "Collapse" : "Expand"}
                     width={32}
                     height={32}
-                    className="w-8 h-8"
+                    className="w-6 h-6"
                   />
                 </motion.div>
               </motion.div>

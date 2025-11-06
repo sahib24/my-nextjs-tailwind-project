@@ -118,7 +118,7 @@ const Slider = () => {
               w-[480px]
             "
           >
-            <div className="rounded-[16px] h-[220px] md:h-[250px] lg:h-[270px] ">
+            <div className="rounded-[16px] h-[220px] md:h-[250px] lg:h-[270px] mb-5">
               <div className="bg-[#F7F6EF] p-4 lg:p-8 flex flex-col gap-3  rounded-[16px]">
                 <div className="flex-1 flex flex-col">
                   <div className="flex justify-start  mb-2">

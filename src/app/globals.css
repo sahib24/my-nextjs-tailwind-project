@@ -23,8 +23,8 @@
 /* Dot style */
 .mySwiper .swiper-pagination-bullet {
   width: 25px;
-  height: 9px;
-  background: #e00606;
+  height: 10px;
+  background: #251fac;
   opacity: 1;
   transition: all 0.3s ease;
   border-radius: 9999px;
@@ -32,8 +32,8 @@
 
 .mySwiper .swiper-pagination-bullet-active {
   width: 30px;
-  height: 10px;
-  background: #0a7a30;
+  height: 11px;
+  background: #d6da06;
   border-radius: 9999px;
   transition: all 0.3s ease;
 }
