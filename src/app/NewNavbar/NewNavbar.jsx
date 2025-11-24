@@ -467,7 +467,7 @@ export default function Navbar() {
                 <button className="text-gray-700 font-medium hover:text-black text-[18px] cursor-pointer">
                   Sign Up
                 </button>
-                <div className="relative group w-max">
+                <div className="relative group w-max mt-4">
                   <button className="relative overflow-hidden bg-black text-[15px] text-white px-4 hover:text-black py-3.5 rounded-[10px] font-bold transition flex items-center justify-center">
                     <span
                       className="absolute left-1/2 bottom-0 w-[350px] h-[350px] rounded-full 

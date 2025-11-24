@@ -87,7 +87,7 @@ const CardsPage = () => {
   ];
 
   return (
-    <div className="container mx-auto py-8 pt-[150px]">
+    <div className="container mx-auto py-8 pt-[100px]">
       {/* <motion.div
         initial={{ x: 50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
