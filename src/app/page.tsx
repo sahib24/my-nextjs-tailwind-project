@@ -22,7 +22,6 @@ export default function Home() {
       </section>
       <section>
         <GridFlex />
-        {/* <LayoutPractice /> */}
       </section>
 
       <section>
